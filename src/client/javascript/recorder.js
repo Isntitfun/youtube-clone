@@ -28,7 +28,7 @@ const getRecordData = (event) => {
 };
 
 const handleDownload = async () => {
-  const ffmpeg = createFFmpeg({ log: true });
+  const ffmpeg = createFFmpeg();
 
   I.classList.remove("fa-download");
   I.classList.add("fa-check");
