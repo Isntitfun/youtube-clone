@@ -38,10 +38,7 @@ app.use(express.json());
 
 app.use("/sss", express.static("asset"));
 app.use("/uploads", express.static("uploads"));
-response.setHeader(
-  "Access-Control-Allow-origin",
-  "https://wetubeeeeeebucket.s3.ap-northeast-1.amazonaws.com/"
-);
+
 app.use((req, res, next) => {
   res.header("Cross-Origin-Embedder-Policy", "require-corp");
   res.header("Cross-Origin-Opener-Policy", "same-origin");

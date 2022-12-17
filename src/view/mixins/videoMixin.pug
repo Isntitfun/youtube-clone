@@ -1,7 +1,7 @@
 mixin listVideo(video)
 
             a(href=`/video/${video._id}`).video-anchor
-                div(style=`background-image: url(${video.thumbnailFile}); background-size: cover; background-position: center`).video-thumb 
+                div(style=`background-image: url(${video.thumbnailFile}); background-size: cover; background-position: center` crossorigin).video-thumb 
                 div.video-data 
                     span.video-title #{video.title}
                     span.video-owner #{video.owner.name}
