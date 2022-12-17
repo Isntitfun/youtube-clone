@@ -5,8 +5,6 @@ const commentDisplay = document.getElementById("comment__display");
 const commentDeleteBtn = document.querySelectorAll(".fa-trash-can");
 const commentEditBtn = document.querySelectorAll(".editBtn");
 
-console.log(commentEditBtn);
-
 const createComment = (commentJSON) => {
   const comment = document.createElement("div");
   comment.className = "comment__container";
@@ -98,7 +96,7 @@ const handleSubmitComment = async (event) => {
   const editedText = targetText.value;
   const commentID =
     event.target.parentElement.parentElement.parentElement.dataset.id;
-  console.log(commentID);
+
   const response = await fetch(`/api/editcommentapi/${commentID}`, {
     method: "POST",
     headers: {

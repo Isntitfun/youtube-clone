@@ -66,6 +66,7 @@ const handlePlayClick = () => {
     video.pause();
   }
   changeIcon(play, video.paused);
+  handleLoadedMetaData();
   //   play.innerText = video.paused ? "Play" : "Pause";
 };
 
@@ -135,6 +136,7 @@ const handleVideoClick = () => {
     video.pause();
   }
   changeIcon(play, video.paused);
+  handleLoadedMetaData();
 };
 
 const handleVideoKeydown = (event) => {
@@ -144,6 +146,7 @@ const handleVideoKeydown = (event) => {
   ) {
     handleVideoClick();
   }
+  handleLoadedMetaData();
 };
 
 const handleVideoEnded = () => {
