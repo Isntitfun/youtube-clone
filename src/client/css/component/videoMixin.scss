@@ -1,0 +1,27 @@
+.video-thumb {
+  width: 100%;
+  height: 160px;
+  background-color: ivory;
+  border-radius: 5px;
+}
+
+.video-data {
+  margin-top: 18px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  display: grid;
+  gap: 7px;
+  .video-title {
+    font-size: 16px;
+  }
+  .video-owner {
+    font-size: 13px;
+    font-weight: 300;
+    opacity: 0.8;
+  }
+  .video-meta {
+    font-size: 13px;
+    font-weight: 300;
+    opacity: 0.8;
+  }
+}

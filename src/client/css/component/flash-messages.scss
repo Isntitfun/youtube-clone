@@ -1,0 +1,45 @@
+@keyframes flash {
+  0% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+}
+
+#message-section {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  margin: 0px auto;
+  box-sizing: border-box;
+  animation: flash 4s ease-out forwards;
+  #flash-container {
+    padding: 6px 20px 5px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    &.error {
+      background-color: rgb(255, 12, 12);
+      color: black;
+    }
+    &.info {
+      background-color: black;
+      color: white;
+    }
+  }
+}

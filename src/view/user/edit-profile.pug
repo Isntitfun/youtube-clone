@@ -1,0 +1,23 @@
+extends ../base
+
+block content 
+    if errorMessage 
+        h5=errorMessage 
+
+    div.avatar-section
+        if loggedInUser.avatar
+            img(src=`${loggedInUser.socialOnly ? loggedInUser.avatar : "/" + loggedInUser.avatar}`,crossorigin width="100")
+        else 
+            i#profile-avatar.far.fa-user        
+        span #{loggedInUser.name} 의 profile
+    form(method="POST" enctype="multipart/form-data").general-form
+        label(for="avatar") Avatar
+        input(name="avatar" type="file" id="avatar" accept="image/*")
+        input(name="email" placeholder="Email" type="text" required  value=`${loggedInUser.email}`) 
+        input(name="username" placeholder="Username" type="text" required value=`${loggedInUser.username}`) 
+        input(name="name" placeholder="Name" type="text" required value=`${loggedInUser.name}`) 
+        input(name="location" placeholder="Address" type="text" required value=`${loggedInUser.location}`)
+        input(type="submit" value="Edit Profile") 
+        if !loggedInUser.socialOnly
+            p
+                a(href="change-password") Change Password  &rarr;

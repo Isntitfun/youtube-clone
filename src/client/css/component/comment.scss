@@ -1,0 +1,94 @@
+#comment__section {
+  width: 100%;
+  display: grid;
+  justify-content: stretch;
+  #comment__form {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 45px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin-right: 20px;
+      align-self: flex-start;
+    }
+    textarea {
+      all: unset;
+      appearance: none;
+      outline: none;
+      background-color: transparent;
+      resize: none;
+      overflow: hidden;
+      width: 100%;
+      margin-right: 5px;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-weight: 400;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+    }
+    button {
+      all: unset;
+      appearance: none;
+      outline: none;
+      background-color: transparent;
+      color: $logo-col;
+      font-size: 27px;
+      cursor: pointer;
+    }
+  }
+  #comment__display {
+    width: 100%;
+    display: grid;
+    justify-content: stretch;
+    gap: 25px;
+
+    .comment__container {
+      display: flex;
+      align-items: center;
+      .comment {
+        display: grid;
+        gap: 5px;
+        width: 100%;
+        span {
+          font-weight: 500;
+          font-size: 15px;
+        }
+        textarea {
+          all: unset;
+          appearance: none;
+          outline: none;
+          background-color: transparent;
+          resize: none;
+          overflow: hidden;
+          width: 100%;
+          font-size: 14px;
+          font-weight: 400;
+          padding-left: 5px;
+        }
+        .comment__btn {
+          display: flex;
+          justify-content: flex-end;
+          i {
+            font-size: 13px;
+            margin-right: 10px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+          }
+        }
+      }
+    }
+  }
+}
+.comment__avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 15px;
+  align-self: flex-start;
+}

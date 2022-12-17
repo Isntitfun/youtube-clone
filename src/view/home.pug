@@ -1,0 +1,10 @@
+extends base
+include mixins/videoMixin
+
+block content 
+    div.video-grid
+        each item in videos
+                +listVideo(item)
+        else 
+            span.no-videos No videos found
+        script(src="/sss/js/index.js") 

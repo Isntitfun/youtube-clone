@@ -1,0 +1,19 @@
+extends ../base
+include ../mixins/videoMixin
+
+block content
+    if errorMessage 
+        h5=errorMessage
+    div.user-block 
+        if loggedInUser.avatar
+            img(src=`${loggedInUser.socialOnly ? loggedInUser.avatar : "/" + loggedInUser.avatar}`,crossorigin width="80")
+        else 
+            i#profile-avatar.far.fa-user
+        div.user-detail
+            span #{user.name}
+            span #{user.location}
+            span #{user.email}
+
+    each item in user.videos
+        div.video-grid
+            +listVideo(item)

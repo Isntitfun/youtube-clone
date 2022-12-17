@@ -1,0 +1,9 @@
+extends ../base
+
+block content 
+    h1.banner Editing : #{video.title}
+    form(method="POST").general-form
+        input(name="title" type="text" placeholder="Video Title" value=`${video.title}`) 
+        input(name="description" type="text" placeholder="Description" value=`${video.description}`) 
+        input(name="hashtags" type="text" placeholder="Hashtags" value=`${video.hashtags}`) 
+        input(type="submit" value="save")

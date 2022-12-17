@@ -1,0 +1,16 @@
+extends base
+include mixins/videoMixin
+
+
+block content 
+    form(method="GET").search-form
+        input(name="keyword" type="text" placeholder="keywords...").text
+        button.submit
+            i.fas.fa-search
+
+    p Search result.
+    each item in videos
+        div.video-grid
+            +listVideo(item)
+    else 
+        span.no-videos No videos found

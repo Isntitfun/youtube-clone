@@ -1,0 +1,39 @@
+include ../mixins/flash-messages
+
+section#message-section 
+    if messages.error   
+        +listMessage("error", messages.error)
+    if messages.info   
+        +listMessage("info", messages.info)
+header 
+    a(href="/")
+        i.fab.fa-youtube.logo 
+        span Wetube
+
+    nav
+        ul
+            li
+                a(href="/search")
+                    i.fas.fa-search
+            
+
+            if loggedIn
+                li
+                    a(href="/video/upload") Upload Video
+                li 
+                    a(href="/user/edit") Edit Profile
+                li 
+                    a(href="/user/logout") Log Out
+                li 
+                    a(href=`/user/${loggedInUser._id}`)
+                        if loggedInUser.avatar 
+                            img(src=`${loggedInUser.socialOnly ? loggedInUser.avatar : "/" + loggedInUser.avatar}`,crossorigin).nav-avatar
+                        else 
+                            i#header-avatar.far.fa-user 
+            else
+                li
+                    a(href="/join") Join          
+                li
+                    a(href="/login").login-btn Login             
+
+            if loggedIn    

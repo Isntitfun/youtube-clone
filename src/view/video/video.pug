@@ -1,0 +1,91 @@
+extends ../base
+
+block content 
+    div(data-id=`${video._id}`)#video-container
+        video(src=`../${video.videoFile}`).video-watch
+        div.controls-container
+            input(type="range" min="0" step="0.1" value="0")#timeline
+            div#controls-btn-container
+                div#left-btn-container
+                    div#play.icon-box 
+                        i.fas.fa-play
+                        i.fas.fa-pause.hide-icon
+                    div#volume-container
+                        div#mute.icon-box 
+                            i.fas.fa-volume-up
+                            i.fas.fa-volume-off.hide-icon
+                        input(type="range" min="0" max="1" step="0.02" value="1")#volume
+                    div#time
+                        span#currentTime 0:00
+                        span  / 
+                        span#totalTime 0:00
+                div#fullscreen.icon-box
+                    i.fas.fa-expand
+                    i.fas.fa-compress.hide-icon
+
+    div#video__info
+        h2 #{video.title}
+        div#other__info
+            #left__info
+                img(src=`${video.owner.socialOnly ? video.owner.avatar : "/" + video.owner.avatar}`,crossorigin).comment__avatar
+                div#other__info__text
+                    a(href=`/user/${video.owner._id}`) #{video.owner.name}
+                    span=video.createdAt.toLocaleDateString("ko-KR", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+            ul 
+                each tag in video.hashtags
+                    li=tag
+                else 
+                    li No tags
+        p=video.description
+     
+     
+
+    hr
+    if loggedInUser && String(loggedInUser._id) === String(video.owner._id)
+        div#modify__video
+            a(href=`${video.id}/edit`) 
+                span Edit video   
+            a(href=`${video.id}/delete`) 
+                span Delete video   
+
+    if loggedIn
+        #comment__section 
+            form#comment__form 
+                img(src=`${loggedInUser.socialOnly ? loggedInUser.avatar : "/" + loggedInUser.avatar}`,crossorigin).comment__avatar 
+                textarea(placeholder="Add comment")
+                button(type="submit")
+                    i.fa-solid.fa-square-arrow-up-right 
+            #comment__display
+                each comment in video.comments.reverse()
+                    div(data-id=`${comment._id}`).comment__container
+                        img(src=`${comment.owner.socialOnly ? comment.owner.avatar : "/" + comment.owner.avatar}`,crossorigin).comment__avatar 
+                        div.comment
+                            span #{comment.owner.name}
+                            textarea(readonly) #{comment.text}
+                            div.comment__btn 
+                                if loggedInUser._id === String(comment.owner._id)
+                                    i.editBtn.fa-regular.fa-pen-to-square
+                                    i.fa-regular.fa-trash-can
+                                    
+
+    else
+        #comment__section 
+            a(href="/login")#comment__form 
+                img(src="https://miro.medium.com/max/1400/0*5vu0h0AstExvonvZ",crossorigin width="45").comment__avatar 
+                textarea(placeholder="Add comment")
+                button(type="submit")
+                    i.fa-solid.fa-square-arrow-up-right 
+            #comment__display
+                each comment in video.comments.reverse()
+                    div(data-id=`${comment._id}`).comment__container
+                        img(src=`${comment.owner.socialOnly ? comment.owner.avatar : "/" + comment.owner.avatar}`,crossorigin).comment__avatar 
+                        div.comment
+                            span #{comment.owner.name}
+                            textarea( readonly) #{comment.text}
+                            div.comment__btn 
+
+
+                                
+block scripts 
+    script(src="/sss/js/videoplayer.js") 
+    script(src="/sss/js/comment.js") 

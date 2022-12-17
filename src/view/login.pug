@@ -1,0 +1,19 @@
+extends base
+
+block content 
+    if errorMessage 
+        h5=errorMessage 
+    else 
+        h5
+
+    h1.banner Login
+    form(method="POST").general-form
+        input(name="username" placeholder="Username" type="text" required) 
+        input(name="password" placeholder="Password" type="text" required) 
+        input(type="submit" value="Login") 
+        hr
+        div.btn.github-login  
+            a(href="/github/auth") Continue with Github  
+                i.fab.fa-github
+        p If you do not have an account, please  
+            a(href="/join") Join &rarr;
