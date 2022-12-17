@@ -2,12 +2,12 @@ import AWS from "aws-sdk";
 import multer from "multer";
 import multerS3 from "multer-s3";
 
-const s3 = new AWS.S3({
-  credentials: {
-    accessKeyId: process.env.AWS_ID,
-    secretAccessKey: process.env.AWS_KEY,
-  },
+AWS.config.update({
+  accessKeyId: process.env.AWS_ID,
+  secretAccessKey: process.env.AWS_KEY,
+  region: "ap-northeast-2",
 });
+const s3 = new AWS.S3();
 
 const imageS3 = multerS3({
   s3: s3,
