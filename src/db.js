@@ -17,3 +17,5 @@ const handleServerOpen = () => {
 
 db.on("error", handleServerError);
 db.once("open", handleServerOpen);
+
+const a = "a";
