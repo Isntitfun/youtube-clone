@@ -131,6 +131,7 @@ export const postEditUser = async (req, res, next) => {
     body: { email, username, name, location },
     file,
   } = req;
+  const { isHeroku } = res.locals;
   const notUniqueEmail = await User.exists({ email });
   const notUniqueUsername = await User.exists({ username });
 
@@ -148,7 +149,7 @@ export const postEditUser = async (req, res, next) => {
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatar: file ? file.path : avatar,
+      avatar: file ? (isHeroku ? file.location : file.path) : avatar,
       email,
       username,
       name,

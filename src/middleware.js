@@ -23,6 +23,7 @@ export const localsMiddleware = (req, res, next) => {
   res.locals.loggedIn = req.session.loggedIn;
   res.locals.loggedInUser = req.session.user;
   res.locals.websiteName = "📺Wetube";
+  res.locals.isHeroku = process.env.NODE_ENV === "production";
   next();
 };
 
