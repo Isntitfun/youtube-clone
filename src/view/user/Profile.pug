@@ -6,7 +6,7 @@ block content
         h5=errorMessage
     div.user-block 
         if loggedInUser.avatar
-            img(src=`${loggedInUser.socialOnly ? loggedInUser.avatar : "/" + loggedInUser.avatar}`,crossorigin width="80")
+            img(src=`${loggedInUser.avatar}`,crossorigin width="80")
         else 
             i#profile-avatar.far.fa-user
         div.user-detail

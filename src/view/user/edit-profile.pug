@@ -6,7 +6,7 @@ block content
 
     div.avatar-section
         if loggedInUser.avatar
-            img(src=`${loggedInUser.socialOnly ? loggedInUser.avatar : "/" + loggedInUser.avatar}`,crossorigin width="100")
+            img(src=`${loggedInUser.avatar}`,crossorigin width="100")
         else 
             i#profile-avatar.far.fa-user        
         span #{loggedInUser.name} 의 profile

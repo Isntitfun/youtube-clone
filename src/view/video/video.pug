@@ -51,7 +51,7 @@ block content
     if loggedIn
         #comment__section 
             form#comment__form 
-                img(src=`${loggedInUser.socialOnly ? loggedInUser.avatar : "/" + loggedInUser.avatar}`,crossorigin).comment__avatar 
+                img(src=`${loggedInUser.avatar}`,crossorigin).comment__avatar 
                 textarea(placeholder="Add comment")
                 button(type="submit")
                     i.fa-solid.fa-square-arrow-up-right 
