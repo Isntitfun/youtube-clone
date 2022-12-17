@@ -40,8 +40,21 @@ app.use("/sss", express.static("asset"));
 app.use("/uploads", express.static("uploads"));
 
 app.use((req, res, next) => {
-  res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  const allowedOrigins = [
+    "https://wetubeeeeeebucket.s3.ap-northeast-1.amazonaws.com",
+    "https://avatars.githubusercontent.com/",
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+  res.header("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Cross-Origin-Embedder-Policy", "same-origin");
   res.header("Cross-Origin-Opener-Policy", "same-origin");
+  res.header("Cross-Origin-Resource-Policy", "cross-origin");
   next();
 });
 app.use("/", rootRouter);
